@@ -2,13 +2,15 @@
   "type": "module",
   "devDependencies": {
     "@types/node": "^26.6.4",
+    "supabase": "^2.119.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   },
   "scripts": {
     "dev": "tsx src/app.ts",
     "build": "tsc",
-    "start": "npm run build && node dist/app.js"
+    "start": "npm run build && node dist/app.js",
+    "gen:types": "npx supabase gen types typescript --project-id pwqtognwxlpmyuclnsbr > src/database/database.types.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.2",
