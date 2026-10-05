@@ -1,12 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
-import { Credentials } from "../env.js";
+import type { Database } from "./database.types.js";
+import type { envCredentials } from "../env.js";
 
-const credentials = new Credentials()
-const env = credentials.loadSupabaseCredentials();
-
-const supabase = createClient(
-    env.supabase_key,
-    env.supabase_url
-);
-
-await supabase.from()
+export function createSupabase(env: envCredentials) {
+    return createClient<Database>(env.supabase_url,env.supabase_key);
+}
