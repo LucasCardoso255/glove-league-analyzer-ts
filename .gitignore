@@ -10,6 +10,7 @@ logs/
 npm-debug.log*
 # Configurações de ambiente
 env
+.env
 # Arquivos temporários e caches
 *.tmp
 *.temp
