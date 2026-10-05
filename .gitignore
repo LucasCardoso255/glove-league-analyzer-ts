@@ -1,0 +1,27 @@
+# Diretórios de dependências
+node_modules/
+bower_components/
+# Saídas do compilador TypeScript
+dist/
+*.tsbuildinfo
+# Arquivos de log
+logs/
+*.log
+npm-debug.log*
+# Configurações de ambiente
+env
+# Arquivos temporários e caches
+*.tmp
+*.temp
+*.swp
+*.swo
+# Configurações específicas de IDEs
+vscode/
+idea/
+*.code-workspace
+# Arquivos gerados pelo sistema operacional
+DS_Store
+Thumbs.db
+# Arquivos de bloqueio de pacotes
+package-lock.json
+yarn.lock
