@@ -1,9 +1,13 @@
 import Fastify from "fastify";
 import { Credentials } from "./env.js";
+import { RiotClient } from "./client/riotClient.js";
 
 export const credentials = new Credentials().loadCredentials();
 
 const app = Fastify();
+const riotClient = new RiotClient();
+
+console.log(await riotClient.get(credentials.korean_player_data_url));
 
 app.get("/", async () => {
     return {
