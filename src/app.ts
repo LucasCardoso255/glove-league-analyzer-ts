@@ -1,12 +1,7 @@
 import Fastify from "fastify";
 import { Credentials } from "./env.js";
-import { createSupabase } from "./database/supabase.js";
 
-const credentials = new Credentials()
-const env = credentials.loadCredentials();
-export const supabase = createSupabase(env);
-
-console.log(await supabase.from("ranked_player_data").select("*"));
+export const credentials = new Credentials().loadCredentials();
 
 const app = Fastify();
 
