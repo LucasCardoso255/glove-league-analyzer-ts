@@ -1,11 +1,12 @@
 import axios from "axios";
-import { credentials } from "../app.js";
+import type { envCredentials } from "../../env.js";
 
 export class RiotClient {
+    constructor(private credentials: envCredentials) {}
     async get(requestUrl: string, pathParam?: string) {
         try {
             const res = await axios.get(requestUrl + (pathParam ?? ""), 
-            {headers: {"X-Riot-Token": credentials.riot_api_key, 
+            {headers: {"X-Riot-Token": this.credentials.riot_api_key, 
                 timeout: 10000}
             })
             return res.data;

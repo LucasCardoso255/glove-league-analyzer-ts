@@ -1,4 +1,4 @@
-export type RankedPlayerData = {
+export type RankedLeagueData = {
   puuid: string;
   tier: string;
   queue: string;
@@ -12,3 +12,5 @@ export type RankedPlayerData = {
   hot_streak: boolean;
   player_rank: string;
 };
+
+// adicionar o tipo antes do entries e colocar que o service pega "entries." e aí sim o tipo 

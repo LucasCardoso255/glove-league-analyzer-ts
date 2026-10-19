@@ -1,28 +1,39 @@
-import { RankedPlayerRepository } from "../repositories/rankedPlayerRepository.js";
-import { database } from "../database/supabase.js";
-import type { RankedPlayerData } from "../models/leaderboardModel.js";
+import { RankedLeagueRepository } from "../repositories/rankedleagueRepository.js";
+import { RiotClient } from "../client/http/riotClient.js";
+import type { RankedLeagueData } from "../models/leaderboardModel.js";
+import type { Database } from "../database/database.types.js";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 export class LeaderboardService {
-    repository = new RankedPlayerRepository()
+    constructor(private riotClient: RiotClient, private database: SupabaseClient<Database>) {}
+    repository = new RankedLeagueRepository()
+
     async getLeaderboard() {
         try {
-            await this.repository.findAll(database);
+            await this.repository.findAll(this.database);
         } catch (error) {
             throw new Error("Search failed: " + error);
         }
     }
     async getLeaderboardPlayerById(playerUuid: string) {
         try {
-            await this.repository.findById(database, playerUuid);
+            await this.repository.findById(this.database, playerUuid);
         } catch (error) {
-            throw new Error("Search failed: " + error);
+            throw error;
         }
     }
-    async insertLeaderboardEntry(obj: RankedPlayerData) {
+    async insertLeaderboardEntry(obj: RankedLeagueData) {
         try {
-            await this.repository.create(database, obj);
+            await this.repository.create(this.database, obj);
         } catch (error) {
-            throw new Error("Insertion failed: " + error);
+            throw error;
+        }
+    }
+    async requestLeagueData(endpoint: string, pathParams?: string) { //adicionar o retorno do service sendo o tipo entries
+        try {
+            return await this.riotClient.get(endpoint + (pathParams ?? ""))
+        } catch (error) {
+            throw error;
         }
     }
 }

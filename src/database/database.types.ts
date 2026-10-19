@@ -1,12 +1,12 @@
-import type { RankedPlayerData } from "../models/leaderboardModel.js";
+import type { RankedLeagueData } from "../models/leaderboardModel.js";
 
 export type Database = {
   public: {
     Tables: {
-      ranked_player_data: {
-        Row: RankedPlayerData;
-        Insert: RankedPlayerData;
-        Update: Partial<RankedPlayerData>;
+      ranked_league_data: {
+        Row: RankedLeagueData;
+        Insert: RankedLeagueData;
+        Update: Partial<RankedLeagueData>;
         Relationships: [];
       };
     };

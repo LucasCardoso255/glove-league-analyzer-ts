@@ -1,13 +1,11 @@
 import Fastify from "fastify";
-import { Credentials } from "./env.js";
-import { RiotClient } from "./client/riotClient.js";
+import { leaderboardController } from "./container.js";
 
-export const credentials = new Credentials().loadCredentials();
-
+const puuid_test = '-tiIArwYLerlIZtNySuMswYJj-j8cc3dSsEIi_rrOevrE2UwEBUMt_vkb5LOt-I9rWP9gzBoXH-eqw'
 const app = Fastify();
-const riotClient = new RiotClient();
 
-console.log(await riotClient.get(credentials.korean_player_data_url));
+console.log(await leaderboardController.insertEntries());
+console.log(await leaderboardController.getEntries());
 
 app.get("/", async () => {
     return {
