@@ -6,6 +6,7 @@ export type envCredentials = {
     korean_player_data_url: string,
     supabase_url: string,
     supabase_key: string
+    supabase_autenticated_key: string
 }
 
 export class Credentials {
@@ -16,7 +17,8 @@ export class Credentials {
             korean_league_data_url: process.env.KOREAN_LEAGUE_DATA_URL!,
             korean_player_data_url: process.env.KOREAN_PLAYER_DATA_URL!,
             supabase_url: process.env.SUPABASE_URL!,
-            supabase_key: process.env.SUPABASE_KEY!
+            supabase_key: process.env.SUPABASE_KEY!,
+            supabase_autenticated_key: process.env.SUPABASE_AUTENTICATED_KEY!
         };
         Object.entries(credentials).forEach(([key, value]) => {
             if (!value) {
