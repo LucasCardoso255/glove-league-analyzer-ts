@@ -13,4 +13,18 @@ export type RankedLeagueData = {
   player_rank: string;
 };
 
-// adicionar o tipo antes do entries e colocar que o service pega "entries." e aí sim o tipo 
+export type Entries = RankedLeagueData[]; // adicionar o tipo antes do entries e colocar que o service pega "entries." e aí sim o tipo 
+
+export type LeagueEntry = {
+  puuid: string;
+  tier: string;
+  queueType: string;
+  leaguePoints: number;
+  rank: string;
+  wins: number;
+  losses: number;
+  veteran: boolean;
+  inactive: boolean;
+  freshBlood: boolean;
+  hotStreak: boolean;
+};

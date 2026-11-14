@@ -6,8 +6,9 @@ export class LeagueDataController {
     
     async insertEntries() {
         try {
-            const obj = await this.leaderboardService.requestLeagueData(this.credentials.korean_league_data_url);
-            await this.leaderboardService.insertLeaderboardEntry(obj);
+            let res = await this.leaderboardService.requestLeagueData(this.credentials.korean_league_data_url);
+            res = await this.leaderboardService.mapEntries(res.entries);
+            await this.leaderboardService.insertLeaderboardEntry(res);
             console.log("Insertion success");
         } catch (error) {
             console.error(error);
