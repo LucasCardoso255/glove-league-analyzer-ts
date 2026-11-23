@@ -1,9 +1,8 @@
 import { LeaderboardService } from "../services/leaderboardService.js"; 
 import type { envCredentials } from "../env.js";
 
-export class LeagueDataController {
+export class LeaderboardController {
     constructor(private leaderboardService: LeaderboardService, private credentials: envCredentials) {}
-    
     async insertEntries() {
         try {
             let res = await this.leaderboardService.requestLeagueData(this.credentials.korean_league_data_url);
